@@ -1,0 +1,195 @@
+{% macro rule_midi_set_obs_preview(key_code, scene, device_alias='FL STUDIO FIRE') %}
+  name: MidiFireSetPreviewScene_{{scene}}_{{key_code}}
+  manipulator_name: midiman
+  executor_name: obsman
+  signal_code: NotePushed
+  command_code: SetCurrentPreviewSceneById
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    preview_scene_id: {{ scene }}
+{% endmacro %}
+
+
+{% macro rule_midi_set_obs_preview_light_off(key_code, scene, device_alias='FL STUDIO FIRE', color='light_red') %}
+  name: MidiFireSetPreviewScene_{{scene}}_{{key_code}}_LightOff
+  manipulator_name: obsman
+  executor_name: midiman
+  signal_code: CurrentPreviewSceneChangedById
+  command_code: TurnLightOffCommand
+  trigger:
+    '!=':
+      - var: scene_id
+      - {{ scene }}
+  logic:
+    color_name: {{ color }}
+    device_alias: {{ device_alias }}
+    key_code: {{ key_code }}
+{% endmacro %}
+
+
+{% macro rule_midi_set_obs_preview_light_on(key_code, scene, device_alias='FL STUDIO FIRE', color='red') %}
+  name: MidiFireSetPreviewScene_{{scene}}_{{key_code}}_LightOn
+  manipulator_name: obsman
+  executor_name: midiman
+  signal_code: CurrentPreviewSceneChangedById
+  command_code: TurnLightOnCommand
+  trigger:
+    ==:
+      - var: scene_id
+      - {{ scene }}
+  logic:
+    color_name: {{ color }}
+    device_alias: {{ device_alias }}
+    key_code: {{ key_code }}
+{% endmacro %}
+
+
+
+
+{% macro rule_midi_set_obs_program(key_code, scene, device_alias='FL STUDIO FIRE') %}
+  name: MidiFireSetProgramScene_{{scene}}_{{key_code}}
+  manipulator_name: midiman
+  executor_name: obsman
+  signal_code: NotePushed
+  command_code: SetCurrentProgramSceneById
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    program_scene_id: {{ scene }}
+{% endmacro %}
+
+
+{% macro rule_midi_set_obs_program_light_off(key_code, scene, device_alias='FL STUDIO FIRE', color='light_red') %}
+  name: MidiFireSetProgramScene_{{scene}}_{{key_code}}_LightOff
+  manipulator_name: obsman
+  executor_name: midiman
+  signal_code: CurrentProgramSceneChangedById
+  command_code: TurnLightOffCommand
+  trigger:
+    '!=':
+      - var: scene_id
+      - {{ scene }}
+  logic:
+    color_name: {{ color }}
+    device_alias: {{ device_alias }}
+    key_code: {{ key_code }}
+{% endmacro %}
+
+
+{% macro rule_midi_set_obs_program_light_on(key_code, scene, device_alias='FL STUDIO FIRE', color='red') %}
+  name: MidiFireSetProgramScene_{{scene}}_{{key_code}}_LightOn
+  manipulator_name: obsman
+  executor_name: midiman
+  signal_code: CurrentProgramSceneChangedById
+  command_code: TurnLightOnCommand
+  trigger:
+    ==:
+      - var: scene_id
+      - {{ scene }}
+  logic:
+    color_name: {{ color }}
+    device_alias: {{ device_alias }}
+    key_code: {{ key_code }}
+{% endmacro %}
+
+
+{% macro rule_midi_set_obs_record(key_code, device_alias='FL STUDIO FIRE') %}
+  name: midi_set_obs_record_{{key_code}}}
+  manipulator_name: midiman
+  executor_name: obsman
+  signal_code: NotePushed
+  command_code: ToggleRecord
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic: {}
+{% endmacro %}
+
+{% macro rule_midi_set_obs_live(key_code, device_alias='FL STUDIO FIRE') %}
+  name: midi_set_obs_live_{{key_code}}
+  manipulator_name: midiman
+  executor_name: obsman
+  signal_code: NotePushed
+  command_code: ToggleStream
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic: {}
+{% endmacro %}
+
+{% macro rule_midi_set_obs_transition(key_code , transition_name, device_alias='FL STUDIO FIRE') %}
+  name: midi_set_obs_transition_{{key_code}}}
+  manipulator_name: midiman
+  executor_name: obsman
+  signal_code: NotePushed
+  command_code: SetCurrentSceneTransition
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    transition_name: {{transition_name}}
+{% endmacro %}
+
+{% macro rule_midi_set_obs_item_enabled(key_code , scene_item_name, device_alias='FL STUDIO FIRE') %}
+  name: midi_set_obs_item_enabled_{{key_code}}_{{scene_item_name}}}
+  manipulator_name: midiman
+  executor_name: obsman
+  signal_code: NotePushed
+  command_code: ToggleCurrentSceneItemEnabled
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    scene_item_name: {{scene_item_name}}
+{% endmacro %}
+
+{% macro rule_midi_trigger_studio_mode_obs_transition(key_code, transition_name, device_alias='FL STUDIO FIRE') %}
+  name: midi_trigger_studio_mode_obs_transition_{{key_code}}_{{transition_name}}_{{device_alias}}
+  manipulator_name: midiman
+  executor_name: obsman
+  signal_code: NotePushed
+  command_code: TriggerStudioModeTransitionWithName
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    transition_name: {{transition_name}}
+{% endmacro %}

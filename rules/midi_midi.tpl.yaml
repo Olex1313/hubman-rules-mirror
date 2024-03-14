@@ -1,0 +1,14 @@
+{% macro rule_midi_set_active_namespace(key_code , namespace , device) %}
+  name: midi_set_active_namespace{{key_code}}_{{namespace}}_{{device}}}
+  manipulator_name: midiman
+  executor_name: midiman
+  signal_code: NotePushed
+  command_code: SetActiveNamespaceCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    namespace: {{namespace}}
+    device: {{device}}
+{% endmacro %}

@@ -1,0 +1,158 @@
+# for command == iris , shitter , gain , noise reduction
+{% macro rule_midi_encoder_with_namespace(key_code, command, multiplier, namespace, cam_alias, mode) %}
+  name: midi_encoder_{{command}}_{{multiplier}}_{{key_code}}_{{namespace}}_{{cam_alias}}_{{mode}}
+  manipulator_name: midiman
+  executor_name: viscaman
+  signal_code: ControlPushed
+  command_code: {{ command }}
+  trigger:
+    and:
+      - ==:
+          - var: key_code
+          - {{ key_code }}
+      - ==:
+          - var: namespace
+          - {{ namespace }}
+  logic:
+    cam_alias: {{ cam_alias }}
+    mode: {{ mode }}
+    value :
+      '*':
+        - var: velocity
+        - {{ multiplier }}
+{% endmacro %}
+
+{% macro rule_midi_rb_encoder_with_namespace(key_code, multiplier, namespace, cam_alias, mode) %}
+  name: midi_encoder_{{multiplier}}_{{key_code}}_{{namespace}}_{{cam_alias}}_{{mode}}
+  manipulator_name: midiman
+  executor_name: viscaman
+  signal_code: ControlPushed
+  command_code: "ColorRBGainCommand"
+  trigger:
+    and:
+      - ==:
+          - var: key_code
+          - {{ key_code }}
+      - ==:
+          - var: namespace
+          - {{ namespace }}
+  logic:
+    cam_alias: {{ cam_alias }}
+    channel: {{ namespace }}
+    selector: {{ mode }}
+    value :
+      '*':
+        - var: velocity
+        - {{ multiplier }}
+{% endmacro %}
+
+{% macro rule_midi_encoder(key_code, command, multiplier, cam_alias, mode) %}
+  name: midi_encoder_{{command}}_{{multiplier}}_{{key_code}}_{{cam_alias}}_{{mode}}
+  manipulator_name: midiman
+  executor_name: viscaman
+  signal_code: ControlPushed
+  command_code: {{ command }}
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias: {{ cam_alias }}
+    mode: {{ mode }}
+    value :
+      '*':
+        - var: velocity
+        - {{ multiplier }}
+{% endmacro %}
+
+# auto1, indoor, outdoor, one_push, auto2, manual
+{% macro rule_midi_wb_mode_encoder(key_code, namespace, cam_alias) %}
+  name: midi_set_exposure_{{key_code}}_{{namespace}}_{{cam_alias}}
+  manipulator_name: midiman
+  executor_name: viscaman
+  signal_code: ControlPushed
+  command_code: WhiteBalanceModeCommand
+  trigger:
+    and:
+      - ==:
+          - var: key_code
+          - {{ key_code }}
+      - ==:
+          - var: namespace
+          - {{ namespace }}
+  logic:
+    cam_alias: {{ cam_alias }}
+    mode: {{ mode }}
+    value :
+      { "if": [
+        { "<": [ { "var": "value" }, 42 ] }, "manual",
+        { "<": [ { "var": "value" }, 84 ] }, "indoor",
+        { "<": [ { "var": "value" }, 126 ] }, "outdoor",
+        { "<": [ { "var": "value" }, 168 ] }, "one_push",
+        { "<": [ { "var": "value" }, 192 ] }, "auto1",
+        { "<": [ { "var": "value" }, 256 ] }, "auto2",
+      ] }
+{% endmacro %}
+
+
+{% macro rule_midi_set_focus_mode(key_code , cam_alias , mode) %}
+  name: midi_set_focus_mode_{{key_code}}_{{cam_alias}}_{{mode}}
+  manipulator_name: midiman
+  executor_name: viscaman
+  signal_code: NotePushed
+  command_code: FocusDirectCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias: {{cam_alias}}
+    mode: {{mode}}
+{% endmacro %}
+
+
+{% macro rule_midi_set_exposure_mode(key_code , cam_alias , mode) %}
+  name: midi_set_exposure_mode_{{key_code}}_{{cam_alias}}_{{mode}}
+  manipulator_name: midiman
+  executor_name: viscaman
+  signal_code: NotePushed
+  command_code: ExposureModeCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias: {{cam_alias}}
+    mode: {{mode}}
+{% endmacro %}
+
+
+{% macro rule_midi_set_white_balance_mode(key_code , cam_alias , mode) %}
+  name: midi_set_white_balance_mode_{{key_code}}_{{cam_alias}}_{{mode}}
+  manipulator_name: midiman
+  executor_name: viscaman
+  signal_code: NotePushed
+  command_code: WhiteBalanceModeCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias: {{cam_alias}}
+    mode: {{mode}}
+{% endmacro %}
+
+
+{% macro rule_midi_set_visca_active_camera(cam_alias, key_code) %}
+  name: MidiFireViscaSetActiveCamera_{{ cam_alias }}_{{ key_code }}
+  manipulator_name: midiman
+  executor_name: viscaman
+  signal_code: NotePushed
+  command_code: SetViscaCameraActiveCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias: {{ cam_alias }}
+{% endmacro %}

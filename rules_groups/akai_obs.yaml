@@ -1,0 +1,69 @@
+rules:
+  - {{ rule_midi_set_obs_preview(102, 1) }}
+  - {{ rule_midi_set_obs_preview_light_off(102, 1, 'FL STUDIO FIRE', 'light_green') }}
+  - {{ rule_midi_set_obs_preview_light_on(102, 1, 'FL STUDIO FIRE', 'green') }}
+
+  - {{ rule_midi_set_obs_preview(103, 2) }}
+  - {{ rule_midi_set_obs_preview_light_off(103, 2, 'FL STUDIO FIRE', 'light_green') }}
+  - {{ rule_midi_set_obs_preview_light_on(103, 2, 'FL STUDIO FIRE', 'green') }}
+
+  - {{ rule_midi_set_obs_preview(104, 3) }}
+  - {{ rule_midi_set_obs_preview_light_off(104, 3, 'FL STUDIO FIRE', 'light_green') }}
+  - {{ rule_midi_set_obs_preview_light_on(104, 3, 'FL STUDIO FIRE', 'green') }}
+
+  - {{ rule_midi_set_obs_preview(105, 4) }}
+  - {{ rule_midi_set_obs_preview_light_off(105, 4, 'FL STUDIO FIRE', 'light_green') }}
+  - {{ rule_midi_set_obs_preview_light_on(105, 4,  'FL STUDIO FIRE', 'green') }}
+
+  - {{ rule_midi_set_obs_preview(106, 5) }}
+  - {{ rule_midi_set_obs_preview_light_off(106, 5, 'FL STUDIO FIRE', 'light_cyan') }}
+  - {{ rule_midi_set_obs_preview_light_on(106, 5, 'FL STUDIO FIRE', 'cyan') }}
+
+  - {{ rule_midi_set_obs_preview(107, 6) }}
+  - {{ rule_midi_set_obs_preview_light_off(107, 6, 'FL STUDIO FIRE', 'light_cyan') }}
+  - {{ rule_midi_set_obs_preview_light_on(107, 6, 'FL STUDIO FIRE', 'cyan') }}
+
+  - {{ rule_midi_set_obs_preview(108, 7) }}
+  - {{ rule_midi_set_obs_preview_light_off(108, 7, 'FL STUDIO FIRE', 'light_cyan') }}
+  - {{ rule_midi_set_obs_preview_light_on(108, 7, 'FL STUDIO FIRE', 'cyan') }}
+
+  - {{ rule_midi_set_obs_preview(109, 8) }}
+  - {{ rule_midi_set_obs_preview_light_off(109, 8, 'FL STUDIO FIRE', 'light_cyan') }}
+  - {{ rule_midi_set_obs_preview_light_on(109, 8, 'FL STUDIO FIRE', 'cyan') }}
+
+
+
+  - {{ rule_midi_set_obs_program(86, 1) }}
+  - {{ rule_midi_set_obs_program_light_off(86, 1, 'FL STUDIO FIRE', 'light_red') }}
+  - {{ rule_midi_set_obs_program_light_on(86, 1, 'FL STUDIO FIRE', 'red') }}
+
+  - {{ rule_midi_set_obs_program(87, 2) }}
+  - {{ rule_midi_set_obs_program_light_off(87, 2, 'FL STUDIO FIRE', 'light_red') }}
+  - {{ rule_midi_set_obs_program_light_on(87, 2, 'FL STUDIO FIRE', 'red') }}
+
+  - {{ rule_midi_set_obs_program(88, 3) }}
+  - {{ rule_midi_set_obs_program_light_off(88, 3, 'FL STUDIO FIRE', 'light_red') }}
+  - {{ rule_midi_set_obs_program_light_on(88, 3, 'FL STUDIO FIRE', 'red') }}
+
+  - {{ rule_midi_set_obs_program(89, 4) }}
+  - {{ rule_midi_set_obs_program_light_off(89, 4, 'FL STUDIO FIRE', 'light_red') }}
+  - {{ rule_midi_set_obs_program_light_on(89, 4, 'FL STUDIO FIRE', 'red') }}
+
+  - {{ rule_midi_set_obs_program(90, 5) }}
+  - {{ rule_midi_set_obs_program_light_off(90, 5, 'FL STUDIO FIRE', 'light_orange') }}
+  - {{ rule_midi_set_obs_program_light_on(90, 5, 'FL STUDIO FIRE', 'orange') }}
+
+  - {{ rule_midi_set_obs_program(91, 6) }}
+  - {{ rule_midi_set_obs_program_light_off(91, 6, 'FL STUDIO FIRE', 'light_orange') }}
+  - {{ rule_midi_set_obs_program_light_on(91, 6, 'FL STUDIO FIRE', 'orange') }}
+
+  - {{ rule_midi_set_obs_program(92, 7) }}
+  - {{ rule_midi_set_obs_program_light_off(92, 7, 'FL STUDIO FIRE', 'light_orange') }}
+  - {{ rule_midi_set_obs_program_light_on(92, 7, 'FL STUDIO FIRE', 'orange') }}
+
+  - {{ rule_midi_set_obs_program(93, 8) }}
+  - {{ rule_midi_set_obs_program_light_off(93, 8, 'FL STUDIO FIRE', 'light_orange') }}
+  - {{ rule_midi_set_obs_program_light_on(93, 8, 'FL STUDIO FIRE', 'orange') }}
+
+  - {{ rule_midi_trigger_studio_mode_obs_transition(53, 'Cut') }}
+  - {{ rule_midi_set_obs_record(50) }}

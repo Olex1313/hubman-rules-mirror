@@ -1,0 +1,698 @@
+devices:
+  - name: viscaman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8097
+    user_config:
+      cameras:
+        - alias: cam1
+          index: 1
+          timeout: 1s
+          url: 172.18.212.15:52381
+    signals:
+      - code: NoiseReduction2DCommand
+        description: 'Sent when executor sets noise reduction 2d/3d for specified camera. Available modes: 2d, 3d. Available value: 0-5'
+        args:
+          cam_alias: String
+          mode: String
+          value: Float
+      - code: FocusDirectCommand
+        description: 'Sent when executor sets focus direct for specified camera. Available positions: 0-16'
+        args:
+          cam_alias: String
+          position: Integer
+      - code: FocusAFSensitivityCommand
+        description: 'Sent when executor sets focus af sensitivity for specified camera. Available modes: low, normal'
+        args:
+          cam_alias: String
+          mode: String
+      - code: ColorChromaSupressSignal
+        description: 'Sent when executor sets color chroma supress for specified camera. Available modes: 0-3'
+        args:
+          cam_alias: String
+          mode: Integer
+      - code: SaturationDirectSignal
+        description: Sent when executor sets saturation direct for specified camera. Available value:0-255
+        args:
+          cam_alias: String
+          value: Float
+      - code: ViscaCameraDeactivatedSignal
+        description: Sent when executor unsets specified camera active for executor camera manager, which means, that other commands couldn't refer to it as 'active' in cam alias field
+        args:
+          cam_alias: String
+      - code: FocusModeSignal
+        description: 'Sent when executor sets focus mode for specified camera. Available modes: auto, manual, toggle, one_push_trigger'
+        args:
+          cam_alias: String
+          mode: String
+      - code: WideDynamicRangeDirectSignal
+        description: Sent when executor sets CamWD for specified camera. Available value:0-4
+        args:
+          cam_alias: String
+          value: Float
+      - code: WhiteBalanceModeSignal
+        description: 'Sent when executor sets white balance mode for specified camera. Available modes: auto1, indoor, outdoor, one_push, auto2, manual'
+        args:
+          cam_alias: String
+          mode: String
+      - code: ExposureIrisSignal
+        description: 'Sent when executor sets EXPOSURE IRIS for specified camera. Available modes: reset, up, down'
+        args:
+          cam_alias: String
+          mode: String
+      - code: FocusOnePushTriggerCommand
+        description: Sent when executor sets focus one push trigger for specified camera.
+        args:
+          cam_alias: String
+      - code: ColorRBGainSignal
+        description: 'Sent when executor sets color rb.gain for specified camera. Available channels: rgain, bgain. Available values: up, down, reset, direct. If selector=direct - set value in interval 0-255'
+        args:
+          cam_alias: String
+          channel: String
+          selector: String
+          value: Float
+      - code: ColorHueDirectSignal
+        description: 'Sent when executor sets CamColorHue for specified camera. Available modes: master, magenta, red, yellow, green, cyan, blue. Available value:0-14'
+        args:
+          cam_alias: String
+          mode: String
+          value: Float
+      - code: ViscaCameraActivatedSignal
+        description: Sent when executor sets specified camera active for executor camera manager, which means, that other commands could refer to it as 'active' in cam alias field
+        args:
+          cam_alias: String
+      - code: ExposureShutterSignal
+        description: 'Sent when executor sets EXPOSURE SHUTTER for specified camera. Available modes: reset, up, down'
+        args:
+          cam_alias: String
+          mode: String
+      - code: ExposureModeSignal
+        description: 'Sent when executor sets EXPOSURE MODE for specified camera. Available modes: ae_full_auto, ae_manual, ae_shutter_priority, ae_iris_priority, ae_bright'
+        args:
+          cam_alias: String
+          mode: String
+      - code: ExposureBackLightSignal
+        description: 'Sent when executor sets EXPOSURE BACK LIGHT for specified camera. Available modes: true, false'
+        args:
+          cam_alias: String
+          mode: Bool
+      - code: FocusAFModeCommand
+        description: 'Sent when executor sets focus af mode for specified camera. Available modes: normal, interval, zoom_trigger. Available values for operation and staying times: 0-255'
+        args:
+          cam_alias: String
+          mode: String
+          operation_time: Integer
+          staying_time: Integer
+      - code: BrightnessDirectSignal
+        description: 'Sent when executor sets Brightness direct for specified camera. Available modes: reset, up, down, direct. If direct - set value 0-255'
+        args:
+          cam_alias: String
+          mode: String
+          value: Float
+      - code: ExposureGainSignal
+        description: 'Sent when executor sets EXPOSURE GAIN for specified camera. Available modes: reset, up, down'
+        args:
+          cam_alias: String
+          mode: String
+    commands:
+      - code: ColorRBGainCommand
+        description: 'Equivalent of COLOR RB.GAIN method, executed on given camera alias. Available channels: rgain, bgain. Available values: up, down, reset, direct. If selector=direct - set value in interval 0-255'
+        args:
+          cam_alias: String
+          channel: String
+          selector: String
+          value: Float
+      - code: ColorHueDirectCommand
+        description: 'Equivalent of CamColorHue method, executed on given camera alias. Available modes: master, magenta, red, yellow, green, cyan, blue. Available value:0-14'
+        args:
+          cam_alias: String
+          mode: String
+          value: Float
+      - code: WideDynamicRangeDirectCommand
+        description: Equivalent of CamWD method, executed on given camera alias. Available value:0-4
+        args:
+          cam_alias: String
+          value: Float
+      - code: FocusAFModeCommand
+        description: 'Equivalent of FOCUS AF MODE method, executed on given camera alias. Available modes: normal, interval, zoom_trigger. Available values for operation and staying times: 0-255'
+        args:
+          cam_alias: String
+          mode: String
+          operation_time: Integer
+          staying_time: Integer
+      - code: FocusDirectCommand
+        description: 'Equivalent of FOCUS DIRECT method, executed on given camera alias. Available positions: 0-65535'
+        args:
+          cam_alias: String
+          value: Integer
+      - code: FocusAFSensitivityCommand
+        description: 'Equivalent of FOCUS AF SENSITIVITY method, executed on given camera alias. Available modes: low, normal'
+        args:
+          cam_alias: String
+          mode: String
+      - code: WhiteBalanceModeCommand
+        description: 'Equivalent of WHITE BALANCE MODE method, executed on given camera alias. Available modes: auto1, indoor, outdoor, one_push, auto2, manual'
+        args:
+          cam_alias: String
+          mode: String
+      - code: FocusModeCommand
+        description: 'Equivalent of FOCUS MODE method, executed on given camera alias. Available modes: auto, manual, toggle, one_push_trigger'
+        args:
+          cam_alias: String
+          mode: String
+      - code: FocusOnePushTriggerCommand
+        description: Equivalent of FOCUS ONE PUSH TRIGGER method, executed on given camera alias.
+        args:
+          cam_alias: String
+      - code: ExposureIrisCommand
+        description: 'Equivalent of EXPOSURE IRIS method, executed on given camera alias. Available modes: reset, up, down, direct. If direct - set value 0-11'
+        args:
+          cam_alias: String
+          mode: String
+          value: Float
+      - code: NoiseReduction2DCommand
+        description: 'Equivalent of NOISE REDUCTION 2D/3D method, executed on given camera alias. Available modes: 2d, 3d. Available value: 0-5'
+        args:
+          cam_alias: String
+          mode: String
+          value: Float
+      - code: SetViscaCameraActiveCommand
+        description: Sets given camera active for executor camera manager, which means, that other commands could refer to it as 'active' in cam alias field
+        args:
+          cam_alias: String
+      - code: ExposureGainCommand
+        description: 'Equivalent of EXPOSURE GAIN method, executed on given camera alias. Available modes: reset, up, down, direct. If direct - set value 0-14'
+        args:
+          cam_alias: String
+          mode: String
+          value: Float
+      - code: ExposureShutterCommand
+        description: 'Equivalent of EXPOSURE SHUTTER method, executed on given camera alias. Available modes: reset, up, down, direct. If direct - set value 0-15'
+        args:
+          cam_alias: String
+          mode: String
+          value: Float
+      - code: ExposureModeCommand
+        description: 'Equivalent of EXPOSURE MODE method, executed on given camera alias. Available modes: ae_full_auto, ae_manual, ae_shutter_priority, ae_iris_priority, ae_bright'
+        args:
+          cam_alias: String
+          mode: String
+      - code: ExposureBackLightCommand
+        description: 'Equivalent of EXPOSURE BACK LIGHT method, executed on given camera alias. Available modes: true, false'
+        args:
+          cam_alias: String
+          mode: Bool
+      - code: ColorChromaSupressCommand
+        description: 'Equivalent of COLOR CHROMA SUPRESS method, executed on given camera alias. Available modes: 0-3'
+        args:
+          cam_alias: String
+          mode: Integer
+      - code: SaturationDirectCommand
+        description: Equivalent of saturation method, executed on given camera alias. Available value:0-255
+        args:
+          cam_alias: String
+          value: Float
+      - code: BrightnessDirectCommand
+        description: 'Equivalent of Brightness method, executed on given camera alias. Available modes: reset, up, down, direct. If direct - set value 0-255'
+        args:
+          cam_alias: String
+          mode: String
+          value: Float
+  - name: obsman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8094
+    user_config:
+      obs:
+        health_check_interval: 1000
+        host_port: 172.18.191.14:4445
+        password: Supervisor
+    signals:
+      - code: CurrentPreviewSceneChangedById
+        description: Sent when current preview scene changes to included scene by id
+        args:
+          scene_id: Integer
+          scene_name: String
+      - code: InputMuteStateChanged
+        description: Sent when input with included name mutes or unmutes
+        args:
+          input_muted: Bool
+          input_name: String
+      - code: VirtualCamStateChanged
+        description: Sent when the virtual cam state changes, for OutputState values see obs docs
+        args:
+          output_active: Bool
+          output_state: String
+      - code: RecordStateChanged
+        description: Sent when record output state changes, for OutputState values see obs docs
+        args:
+          output_active: Bool
+          output_path: String
+          output_state: String
+      - code: StudioModeStateChanged
+        description: Sent when studio mode has been enabled or disabled
+        args:
+          studio_mode_enabled: Bool
+      - code: CurrentPreviewSceneChanged
+        description: Sent when current preview scene changes to included scene by name
+        args:
+          scene_name: String
+      - code: SceneItemEnableStateChanged
+        description: Sent when item's enabled state has changed
+        args:
+          scene_item_enabled: Bool
+          scene_item_id: Integer
+          scene_name: String
+      - code: ScreenshotSaved
+        description: Sent when a screenshot has been saved
+        args:
+          saved_screenshot_path: String
+      - code: CurrentProgramSceneChanged
+        description: Sent when current program scene changes to included scene by name
+        args:
+          scene_name: String
+      - code: CurrentProgramSceneChangedById
+        description: Sent when current program scene changes to included scene by id
+        args:
+          scene_id: Integer
+          scene_name: String
+      - code: InputVolumeChanged
+        description: Sent when input with included name changes its volume
+        args:
+          input_name: String
+          input_volume_db: Float
+          input_volume_mul: Float
+      - code: ReplayBufferSaved
+        description: Sent when the replay buffer has been saved to included path
+        args:
+          saved_replay_path: String
+      - code: ReplayBufferStateChanged
+        description: Sent when the replay buffer state changes, for OutputState values see obs docs
+        args:
+          output_active: Bool
+          output_state: String
+      - code: StreamStateChanged
+        description: Sent when stream output state changes, for OutputState values see obs docs
+        args:
+          output_active: Bool
+          output_state: String
+      - code: SceneTransitionEnded
+        description: Sent when scene transition has completed fully, i.e. not interrupted by user
+        args:
+          transition_name: String
+      - code: SceneTransitionStarted
+        description: Sent when scene transition video complets fully, see obs docs for concrete explanation
+        args:
+          transition_name: String
+    commands:
+      - code: SetStudioModeEnabled
+        description: Enables or disables studio mode with given property
+        args:
+          use_studio_mode: Bool
+      - code: StartRecord
+        description: Starts record, if it is already started - is noop. Similar to start record button
+        args: { }
+      - code: StopRecord
+        description: Toggles off record, if it is off - is noop. Similar to stop record button
+        args: { }
+      - code: SetCurrentProgramSceneById
+        description: Sets current Program Scene by id
+        args:
+          program_scene_id: Integer
+      - code: SetInputMute
+        description: Sets the audio mute state of an input with given muted property
+        args:
+          input_name: String
+          muted: Bool
+      - code: ToggleInputMute
+        description: Toggles the audio mute state of a given input. Ex true->false, false->true
+        args:
+          input_name: String
+      - code: StartStream
+        description: Starts Stream, if it is already running is no-op
+        args: { }
+      - code: StopStream
+        description: Stops Stream, if it is off - is no-op
+        args: { }
+      - code: SetCurrentPreviewScene
+        description: Sets current Preview Scene
+        args:
+          preview_scene_name: String
+      - code: SetCurrentProgramScene
+        description: Sets current Program Scene
+        args:
+          program_scene_name: String
+      - code: SetCurrentSceneTransition
+        description: Sets Current Scene Transition
+        args:
+          transition_name: String
+      - code: SendStreamCaption
+        description: Sends StreamCaption
+        args:
+          stream_caption: String
+      - code: TriggerStudioModeTransition
+        description: Triggers selected in OBS studio mode transition
+        args: { }
+      - code: ToggleSceneItemEnabled
+        description: Toggles the scene item enabled state, searches for it using given scene. Ex true->false, false->true
+        args:
+          scene_item_name: String
+          scene_name: String
+      - code: ToggleCurrentSceneItemEnabled
+        description: Toggles the scene item enabled state, searches for it using current scene. Ex true->false, false->true
+        args:
+          scene_item_name: String
+      - code: TriggerStudioModeTransitionWithName
+        description: Triggers studio mode transition with name included in command
+        args:
+          transition_name: String
+      - code: ResumeRecord
+        description: Resumes Record
+        args: { }
+      - code: SetCurrentPreviewSceneById
+        description: Sets current Preview Scene by id
+        args:
+          preview_scene_id: Integer
+      - code: ToggleRecord
+        description: Toggles Record, ex recording -> stop off, no recording -> start it
+        args: { }
+      - code: PauseRecord
+        description: Pauses current recording, no-op if obs is not recording now
+        args: { }
+      - code: ToggleRecordPause
+        description: Toggles RecordPause
+        args: { }
+      - code: ToggleStream
+        description: 'Toggles Stream, ex: streaming -> stop, stop -> streaming'
+        args: { }
+  - name: midiman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8093
+    user_config:
+      midi_devices:
+        - active: true
+          device_name: FL STUDIO FIRE
+          hold_delta: 1
+          namespace: default
+    signals:
+      - code: NotePushed
+        description: NotePushed - signal represents state of key with 'Note' type right off it was pressed on a device
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+      - code: NoteHold
+        description: NoteHold - signal represents state of key with 'Note' type that is pressed for long
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+      - code: NoteReleased
+        description: NoteReleased - signal represents state of key with 'Note' type right off it was released on a device
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+      - code: NoteReleasedAfterHold
+        description: NoteReleasedAfterHold - signal represents state of key with 'Note' type right off it was released on a device after hold
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+      - code: ControlPushed
+        description: ControlPushed - signal represents state of key with 'Control' type right off it was pressed on a device
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+    commands:
+      - code: SingleReversedBlinkCommand
+        description: Single reverse blink (...->on->off->on) for specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+      - code: ContinuousBlinkCommand
+        description: Continuous blink (until next discontinuous command) specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+      - code: SetActiveNamespaceCommand
+        description: Sets given namespace as active on given device, all signals will be received from will contain active namespace attribute
+        args:
+          device: String
+          namespace: String
+      - code: TurnLightOnCommand
+        description: Turns light on for specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+      - code: TurnLightOffCommand
+        description: Turns light off for specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+      - code: SingleBlinkCommand
+        description: Single blink (...->off->on->off) for specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+  - name: hidman
+    is_manipulator: true
+    is_executor: false
+    url: http://127.0.0.1:8091
+    user_config:
+      hid:
+        devices: []
+    signals:
+      - code: KeyHoldSignal
+        description: Sent when key is been held for configured duration time, after that time passes
+        args:
+          key_code: Integer
+          modifier: Integer
+      - code: KeyPushedSignal
+        description: KeyPushedSignal - simple key push signal
+        args:
+          key_code: Integer
+          modifier: Integer
+      - code: KeyReleasedSignal
+        description: KeyReleasedSignal - simple key release signal
+        args:
+          hold_duration: Integer
+          key_code: Integer
+          modifier: Integer
+  - name: onvifman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8092
+    user_config:
+      cameras:
+        - alias: cam1
+          password: Supervisor
+          speed:
+            pan: 0.5
+            tilt: 0.5
+            zoom: 1
+          timeout: 1s
+          url: 172.18.191.247:81
+          user: admin
+      health_check_interval_ms: 0
+    signals:
+      - code: CameraDeactivatedSignal
+        description: "Sent when executor unsets specified camera active for executor camera manager, which means, that \nother commands couldn't refer to it as 'active' in cam alias field"
+        args:
+          cam_alias: String
+      - code: GoToPresetSignal
+        description: Sent when executor sets current camera go to preset with num specified in 'preset_num' field
+        args:
+          cam_alias: String
+          preset_num: Integer
+      - code: GoAwayPresetSignal
+        description: Sent when executor sets current camera go away from preset position with num specified in 'preset_num' field
+        args:
+          cam_alias: String
+          preset_num: Integer
+      - code: AbsoluteMoveSignal
+        description: Sent when executor sets current camera moves in needed direction
+        args:
+          cam_alias: String
+          pan: Float
+          tilt: Float
+          zoom: Float
+      - code: CameraActivatedSignal
+        description: "Sent when executor sets specified camera active for executor camera manager, which means, that \nother commands could refer to it as 'active' in cam alias field"
+        args:
+          cam_alias: String
+      - code: AutoFocusModeSignal
+        description: Sent when executor sets current camera sets auto focus mode specified in 'mode' field
+        args:
+          cam_alias: String
+          mode: String
+      - code: DirectFocusSignal
+        description: Sent when executor sets current camera sets absolute focus position specified in 'position' field
+        args:
+          cam_alias: String
+          position: Float
+      - code: BacklightCompensationSignal
+        description: Sent when executor sets current camera changes BacklightCompensation mode
+        args:
+          cam_alias: String
+          enabled: Bool
+      - code: PresetSetSignal
+        description: Sent when executor sets current camera position as preset with num specified in 'preset' field
+        args:
+          cam_alias: String
+          preset_num: Integer
+    commands:
+      - code: PTZSetPresetCommand
+        description: Equivalent of ONVIF SetPreset, executed at given camera
+        args:
+          cam_alias: String
+          preset_num: Integer
+      - code: PTZGoToPresetCommand
+        description: Equivalent of ONVIF GoToPreset, executed at given camera
+        args:
+          cam_alias: String
+          preset_num: Integer
+      - code: SetStringVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified string
+        args:
+          var_name: String
+          var_value: String
+      - code: SetIntegerVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified integer number
+        args:
+          var_name: String
+          var_value: Integer
+      - code: SetBoolVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified boolean
+        args:
+          var_name: String
+          var_value: Bool
+      - code: AbsoluteMoveCommand
+        description: Move camera ignoring current camera speed
+        args:
+          cam_alias: String
+          pan: Float
+          tilt: Float
+          zoom: Float
+      - code: PTZStopCommand
+        description: Equivalent of ONVIF Stop method, executed on given camera alias
+        args:
+          cam_alias: String
+      - code: AutoFocusModeCommand
+        description: 'Equivalent of ONVIF AutoFocusMode, executed at given camera. Modes: Auto, Manual'
+        args:
+          cam_alias: String
+          mode: String
+      - code: SwitchAutoFocusModeCommand
+        description: Switch Auto Focus mode in given camera. Auto -> Manual; Manual -> Auto
+        args:
+          cam_alias: String
+      - code: SetFloatVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified float number
+        args:
+          var_name: String
+          var_value: Float
+      - code: SetCameraActiveCommand
+        description: "Sets given camera active for executor camera manager, which means, that \nother commands could refer to it as 'active' in cam alias field"
+        args:
+          cam_alias: String
+      - code: SwitchBacklightCompensationCommand
+        description: Switch BacklightCompensation mode to opposite
+        args:
+          cam_alias: String
+      - code: DirectFocusCommand
+        description: Equivalent of ONVIF AbsoluteFocus, executed at given camera
+        args:
+          cam_alias: String
+          position: Float
+      - code: BacklightCompensationCommand
+        description: Equivalent of ONVIF BacklightCompensation, executed at given camera
+        args:
+          cam_alias: String
+          enabled: Bool
+      - code: PTZMoveCommand
+        description: Equivalent of ONVIF ContinuousMove method with given pan/tilt/zoom vector on given camera alias
+        args:
+          cam_alias: String
+          pan: Float
+          tilt: Float
+          zoom: Float
+      - code: PTZUpdateSpeedCommand
+        description: Executes ONVIF ContinuousMove or Stop at given camera, uses agent state to determine ONVIF command
+        args:
+          cam_alias: String
+          pan: Float
+          tilt: Float
+          zoom: Float
+      - code: PTZSetSpeedCommand
+        description: Set constant speed value to specified fields
+        args:
+          cam_alias: String
+          pan: Float
+          tilt: Float
+          zoom: Float
+  - name: pelcoman
+    is_manipulator: true
+    is_executor: false
+    url: http://127.0.0.1:8100
+    user_config:
+      pelco:
+        devices:
+          - baud_rate: 9600
+            name: pelco1
+            system_port: /dev/ttyCONV485
+    signals:
+      - code: PelcoPresetSignal
+        description: PelcoChangePreset - pelco preset signal. Have PresetNum for camera
+        args:
+          camera_num: Integer
+          preset_num: Integer
+      - code: PelcoShotSignal
+        description: PelcoShotSignal - pelco shot signal from controller. Have PresetNum for camera
+        args:
+          camera_num: Integer
+          preset_num: Integer
+      - code: PelcoStopSignal
+        description: PelcoStopSignal - signal to stop actions with zero data
+        args:
+          camera_num: Integer
+      - code: PelcoMoveJoystickSignal
+        description: PelcoMoveJoystickSignal - signal to move joystick with directionpanspeed, and tiltspeed parameters with value between 0 and 100
+        args:
+          camera_num: Integer
+          pan_speed: Integer
+          tilt_speed: Integer
+      - code: PelcoTeleSignal
+        description: PelcoTeleSignal - signal to move zoom away. Have only a command code without additional data
+        args:
+          camera_num: Integer
+      - code: PelcoWideSignal
+        description: PelcoWideSignal - signal to zoom in. Have only a command code without additional data
+        args:
+          camera_num: Integer
+      - code: PelcoFarSignal
+        description: PelcoFarSignal - signal to focus away. Have not data
+        args:
+          camera_num: Integer
+      - code: PelcoNearSignal
+        description: PelcoNearSignal - signal to focus closer. Have not data
+        args:
+          camera_num: Integer
+rules:
+  - include: akai_visca.yaml
+  - include: akai_obs.yaml
+  - include: akai_onvif.yaml
+  - include: hid_master.yaml
+  - include: pelco_onvif.yaml

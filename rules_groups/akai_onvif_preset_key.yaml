@@ -1,0 +1,5 @@
+rules:
+  - {{ rule_midi_set_onvif_preset(camera_alias, preset_num, key_code) }}
+  - {{ rule_midi_go_to_onvif_preset(camera_alias, preset_num, key_code) }}
+  - {{ rule_midi_go_to_onvif_preset_indicate(camera_alias, preset_num, key_code) }}
+  - {{ rule_midi_go_to_onvif_preset_no_indicate(camera_alias, preset_num, key_code) }}

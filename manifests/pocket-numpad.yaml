@@ -1,0 +1,167 @@
+name: demo-1
+devices:
+  - name: pelcoman
+    is_manipulator: true
+    is_executor: false
+    url: http://127.0.0.1:8100
+    user_config:
+      pelco:
+        devices:
+          - baud_rate: 9600
+            name: pelco1
+            system_port: /dev/ttyCONV485
+    signals:
+      - code: PelcoPresetSignal
+        description: PelcoChangePreset - pelco preset signal. Have PresetNum for camera
+        args:
+          camera_num: Integer
+          preset_num: Integer
+      - code: PelcoShotSignal
+        description: PelcoShotSignal - pelco shot signal from controller. Have PresetNum for camera
+        args:
+          camera_num: Integer
+          preset_num: Integer
+      - code: PelcoStopSignal
+        description: PelcoStopSignal - signal to stop actions with zero data
+        args:
+          camera_num: Integer
+      - code: PelcoMoveJoystickSignal
+        description: PelcoMoveJoystickSignal - signal to move joystick with directionpanspeed, and tiltspeed parameters with value between 0 and 100
+        args:
+          camera_num: Integer
+          pan_speed: Integer
+          tilt_speed: Integer
+      - code: PelcoTeleSignal
+        description: PelcoTeleSignal - signal to move zoom away. Have only a command code without additional data
+        args:
+          camera_num: Integer
+      - code: PelcoWideSignal
+        description: PelcoWideSignal - signal to zoom in. Have only a command code without additional data
+        args:
+          camera_num: Integer
+      - code: PelcoFarSignal
+        description: PelcoFarSignal - signal to focus away. Have not data
+        args:
+          camera_num: Integer
+      - code: PelcoNearSignal
+        description: PelcoNearSignal - signal to focus closer. Have not data
+        args:
+          camera_num: Integer
+  - name: hidman
+    is_manipulator: true
+    is_executor: false
+    url: http://127.0.0.1:8091
+    user_config:
+      hid:
+        devices:
+          - hold_delta: 1000
+            'max_restart_retries: 10': 10
+            product_id: 102
+            restart_devices_interval_sec: 1
+    signals:
+      - code: KeyPushedSignal
+        description: KeyPushedSignal - simple key push signal
+        args:
+          key_code: Integer
+          modifier: Integer
+      - code: KeyReleasedSignal
+        description: KeyReleasedSignal - simple key release signal
+        args:
+          hold_duration: Integer
+          key_code: Integer
+          modifier: Integer
+      - code: KeyHoldSignal
+        description: Sent when key is been held for configured duration time, after that time passes
+        args:
+          key_code: Integer
+          modifier: Integer
+  - name: onvifman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8092
+    user_config:
+      cameras:
+        - alias: cam1
+          password: Supervisor
+          speed:
+            pan: 1
+            tilt: 1
+            zoom: 1
+          timeout: 1s
+          url: 172.18.191.245:80
+          user: admin
+        - alias: cam2
+          password: Supervisor
+          speed:
+            pan: 1
+            tilt: 1
+            zoom: 1
+          timeout: 1s
+          url: 172.18.191.143:80
+          user: admin
+        - alias: cam3
+          password: Supervisor
+          speed:
+            pan: 1
+            tilt: 1
+            zoom: 1
+          timeout: 1s
+          url: 172.18.191.116:80
+          user: admin
+    signals:
+      - code: CameraActivatedSignal
+        description: "Sent when executor sets specified camera active for executor camera manager, which means, that \nother commands could refer to it as 'active' in cam alias field"
+        args:
+          cam_alias: String
+      - code: CameraDeactivatedSignal
+        description: "Sent when executor unsets specified camera active for executor camera manager, which means, that \nother commands couldn't refer to it as 'active' in cam alias field"
+        args:
+          cam_alias: String
+      - code: PresetSetSignal
+        description: Sent when executor sets current camera position as preset with num specified in 'preset' field
+        args:
+          cam_alias: String
+          preset: Integer
+    commands:
+      - code: PTZSetPresetCommand
+        description: Equivalent of ONVIF SetPreset, executed at given camera
+        args:
+          cam_alias: String
+          preset_num: Integer
+      - code: PTZGoToPresetCommand
+        description: Equivalent of ONVIF GoToPreset, executed at given camera
+        args:
+          cam_alias: String
+          preset_num: Integer
+      - code: PTZMoveCommand
+        description: Equivalent of ONVIF ContinuousMove method with given pan/tilt/zoom vector on given camera alias
+        args:
+          cam_alias: String
+          pan: Float
+          tilt: Float
+          zoom: Float
+      - code: PTZUpdateSpeedCommand
+        description: Executes ONVIF ContinuousMove or Stop at given camera, uses agent state to determine ONVIF command
+        args:
+          cam_alias: String
+          pan: Float
+          tilt: Float
+          zoom: Float
+      - code: PTZSetSpeedCommand
+        description: Set constant speed value to specified fields
+        args:
+          cam_alias: String
+          pan: Float
+          tilt: Float
+          zoom: Float
+      - code: PTZStopCommand
+        description: Equivalent of ONVIF Stop method, executed on given camera alias
+        args:
+          cam_alias: String
+      - code: SetCameraActiveCommand
+        description: "Sets given camera active for executor camera manager, which means, that \nother commands could refer to it as 'active' in cam alias field"
+        args:
+          cam_alias: String
+rules:
+  - include: hid_master.yaml
+  - include: pelco_onvif.yaml

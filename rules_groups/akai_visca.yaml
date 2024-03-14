@@ -1,0 +1,32 @@
+rules:
+  #  кнопки
+  - {{ rule_midi_set_exposure_mode(31, 'active', 'ae_full_auto') }}
+  - {{ rule_midi_set_white_balance_mode(32, 'active', 'auto1') }}
+  - {{ rule_midi_set_active_namespace(54, 'iris', 'FL STUDIO FIRE') }}
+  - {{ rule_midi_set_active_namespace(55, 'shutter', 'FL STUDIO FIRE') }}
+  - {{ rule_midi_set_active_namespace(56, 'rgain', 'FL STUDIO FIRE') }}
+  - {{ rule_midi_set_active_namespace(57, 'bgain', 'FL STUDIO FIRE') }}
+  - {{ rule_midi_set_active_namespace(58, 'wdr', 'FL STUDIO FIRE') }}
+  - {{ rule_midi_set_active_namespace(59, 'nr', 'FL STUDIO FIRE') }}
+
+  #  кнопки на крутилках
+  - {{ rule_midi_set_focus_mode(118, 'active', 'auto') }}
+
+  #  крутилках
+  - {{ rule_midi_encoder(118, 'FocusDirectCommand', 256, 'active', 'direct') }}
+  - {{ rule_midi_encoder(17, 'ColorHueDirectCommand', 0.05859375, 'active', 'direct') }}
+  - {{ rule_midi_encoder(18, 'SaturationDirectCommand', 1, 'active', 'direct') }}
+  - {{ rule_midi_encoder(19, 'BrightnessDirectCommand', 1, 'active', 'direct') }}
+  - {{ rule_midi_encoder_with_namespace(16, 'ExposureIrisCommand', 0.09448818897, 'iris', 'active', 'direct') }}
+  - {{ rule_midi_encoder_with_namespace(16, 'ExposureShutterCommand', 0.12598425196, 'shutter', 'active', 'direct') }}
+  - {{ rule_midi_rb_encoder_with_namespace(16, 2.00787401575, 'rgain', 'active', 'direct') }}
+  - {{ rule_midi_rb_encoder_with_namespace(16, 2.00787401575, 'bgain', 'active', 'direct') }}
+  - {{ rule_midi_encoder_with_namespace(16, 'WideDynamicRangeDirectCommand', 0.01953125, 'wdr', 'active', 'direct') }}
+  - {{ rule_midi_encoder_with_namespace(16, 'NoiseReduction2DCommand', 0.0234375, 'nr', 'active', '2d') }}
+
+
+  # set active
+  - {{ rule_midi_set_visca_active_camera('cam1', 36) }}
+  - {{ rule_midi_set_visca_active_camera('cam2', 37) }}
+  - {{ rule_midi_set_visca_active_camera('cam3', 38) }}
+  - {{ rule_midi_set_visca_active_camera('cam4', 39) }}

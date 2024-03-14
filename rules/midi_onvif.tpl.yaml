@@ -1,0 +1,143 @@
+{% macro rule_midi_set_onvif_preset(cam_alias, preset_num, key_code) %}
+  name: MidiFireOnvifSetPreset_{{ cam_alias }}_{{ preset_num }}_{{ key_code }}
+  manipulator_name: midiman
+  executor_name: onvifman
+  signal_code: NoteHold
+  command_code: PTZSetPresetCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias: {{ cam_alias }}
+    preset_num: {{ preset_num }}
+{% endmacro %}
+
+
+{% macro rule_midi_go_to_onvif_preset(cam_alias, preset_num, key_code) %}
+  name: MidiFireOnvifGoToPreset_{{ cam_alias }}_{{ preset_num }}_{{ key_code }}
+  manipulator_name: midiman
+  executor_name: onvifman
+  signal_code: NoteReleased
+  command_code: PTZGoToPresetCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias: {{ cam_alias }}
+    preset_num: {{ preset_num }}
+{% endmacro %}
+
+
+{% macro rule_midi_go_to_onvif_preset_indicate(cam_alias, preset_num, key_code) %}
+  name: MidiFireOnvifSetPresetIndicate_{{ cam_alias }}_{{ preset_num }}_{{ key_code }}
+  manipulator_name: onvifman
+  executor_name: midiman
+  signal_code: PresetSetSignal
+  command_code: SingleBlinkCommand
+  trigger:
+    and:
+      - ==:
+          - var: preset_num
+          - {{ preset_num }}
+      - ==:
+          - var: cam_alias
+          - {{ cam_alias }}
+  logic:
+    color_name: orange
+    device_alias: FL STUDIO FIRE
+    key_code: {{ key_code }}
+{% endmacro %}
+
+
+{% macro rule_midi_go_to_onvif_preset_indicate(cam_alias, preset_num, key_code) %}
+  name: MidiFireOnvifGoToPresetIndicate_{{ cam_alias }}_{{ preset_num }}_{{ key_code }}
+  manipulator_name: onvifman
+  executor_name: midiman
+  signal_code: GoToPresetSignal
+  command_code: TurnLightOnCommand
+  trigger:
+    and:
+      - ==:
+          - var: preset_num
+          - {{ preset_num }}
+      - ==:
+          - var: cam_alias
+          - {{ cam_alias }}
+  logic:
+    color_name: orange
+    device_alias: FL STUDIO FIRE
+    key_code: {{ key_code }}
+{% endmacro %}
+
+
+{% macro rule_midi_go_to_onvif_preset_no_indicate(cam_alias, preset_num, key_code) %}
+  name: MidiFireOnvifGoAwayPresetNoIndicate_{{ cam_alias }}_{{ preset_num }}_{{ key_code }}
+  manipulator_name: onvifman
+  executor_name: midiman
+  signal_code: GoAwayPresetSignal
+  command_code: TurnLightOffCommand
+  trigger:
+    and:
+      - ==:
+          - var: preset_num
+          - {{ preset_num }}
+      - ==:
+          - var: cam_alias
+          - {{ cam_alias }}
+  logic:
+    color_name: orange
+    device_alias: FL STUDIO FIRE
+    key_code: {{ key_code }}
+{% endmacro %}
+
+
+{% macro rule_midi_set_onvif_active_camera(cam_alias, key_code) %}
+  name: MidiFireOnvifSetActiveCamera_{{ cam_alias }}_{{ key_code }}
+  manipulator_name: midiman
+  executor_name: onvifman
+  signal_code: NotePushed
+  command_code: SetCameraActiveCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias: {{ cam_alias }}
+{% endmacro %}
+
+
+{% macro rule_midi_set_onvif_active_camera_indicate(cam_alias, key_code) %}
+  name: MidiFireOnvifSetActiveCameraIndicate_{{ cam_alias }}_{{ key_code }}
+  manipulator_name: onvifman
+  executor_name: midiman
+  signal_code: CameraActivatedSignal
+  command_code: TurnLightOnCommand
+  trigger:
+    ==:
+      - var: cam_alias
+      - {{ cam_alias }}
+  logic:
+    color_name: green
+    device_alias: FL STUDIO FIRE
+    key_code: {{ key_code }}
+{% endmacro %}
+
+
+{% macro rule_midi_set_onvif_active_camera_no_indicate(cam_alias, key_code) %}
+  name: MidiFireOnvifSetActiveCameraNoIndicate_{{ cam_alias }}_{{ key_code }}
+  manipulator_name: onvifman
+  executor_name: midiman
+  signal_code: CameraDeactivatedSignal
+  command_code: TurnLightOffCommand
+  trigger:
+    ==:
+      - var: cam_alias
+      - {{ cam_alias }}
+  logic:
+    color_name: green
+    device_alias: FL STUDIO FIRE
+    key_code: {{ key_code }}
+{% endmacro %}
+

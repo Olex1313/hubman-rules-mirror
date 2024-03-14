@@ -1,0 +1,119 @@
+# Правила для джойстиков в пелке
+
+rules:
+
+  # Go to preset
+  - name: PelcoGoToPreset
+    manipulator_name: pelcoman
+    executor_name: onvifman
+    signal_code: PelcoShotSignal
+    command_code: PTZGoToPresetCommand
+    trigger:
+      ==: [ 1, 1 ]
+    logic:
+      cam_alias:
+        if:
+          - {'==': [{var: camera_num}, 0 ]}
+          - active
+          - cat: ['cam', var: camera_num]
+      preset_num:
+        var: preset_num
+
+  # Set preset
+  - name: PelcoSetPreset
+    manipulator_name: pelcoman
+    executor_name: onvifman
+    signal_code: PelcoPresetSignal
+    command_code: PTZSetPresetCommand
+    trigger:
+      ==: [ 1, 1 ]
+    logic:
+      cam_alias:
+        if:
+          - {'==': [{var: camera_num}, 0 ]}
+          - active
+          - cat: [ 'cam', var: camera_num ]
+      preset_num:
+        var: preset_num
+
+  # Set Direction on move
+  - name: PelcoMoveJoystickOnvifMove
+    manipulator_name: pelcoman
+    executor_name: onvifman
+    signal_code: PelcoMoveJoystickSignal
+    command_code: PTZMoveCommand
+    trigger:
+      ==:
+        - 1
+        - 1
+    logic:
+      cam_alias:
+        if:
+          - {'==': [{var: camera_num}, 0 ]}
+          - active
+          - cat: [ 'cam', var: camera_num ]
+      pan:
+        "*":
+          - var: pan_speed
+          - 0.1
+      tilt:
+        "*":
+          - var: tilt_speed
+          - 0.1
+      zoom: 0
+
+  # Zoom rules
+  - name: PelcoTeleOnvifZoom
+    manipulator_name: pelcoman
+    executor_name: onvifman
+    signal_code: PelcoTeleSignal
+    command_code: PTZMoveCommand
+    trigger:
+      ==:
+        - 1
+        - 1
+    logic:
+      cam_alias:
+        if:
+          - {'==': [{var: camera_num}, 0 ]}
+          - active
+          - cat: [ 'cam', var: camera_num ]
+      pan: 0
+      tilt: 0
+      zoom: 1
+
+  - name: PelcoWideOnvifMoveZoom
+    manipulator_name: pelcoman
+    executor_name: onvifman
+    signal_code: PelcoWideSignal
+    command_code: PTZMoveCommand
+    trigger:
+      ==:
+        - 1
+        - 1
+    logic:
+      cam_alias:
+        if:
+          - {'==': [{var: camera_num}, 0 ]}
+          - active
+          - cat: [ 'cam', var: camera_num ]
+      pan: 0
+      tilt: 0
+      zoom: -1
+
+  # Stop Rule
+  - name: PelcoStopOnvifMove
+    manipulator_name: pelcoman
+    executor_name: onvifman
+    signal_code: PelcoStopSignal
+    command_code: PTZStopCommand
+    trigger:
+      "==":
+        - 1
+        - 1
+    logic:
+      cam_alias:
+        if:
+          - {'==': [{var: camera_num}, 0 ]}
+          - active
+          - cat: [ 'cam', var: camera_num ]

@@ -1,0 +1,154 @@
+rules:
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam1
+    preset_num: 1
+    key_code: 62
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam1
+    preset_num: 2
+    key_code: 63
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam1
+    preset_num: 3
+    key_code: 64
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam1
+    preset_num: 4
+    key_code: 65
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam1
+    preset_num: 5
+    key_code: 66
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam1
+    preset_num: 6
+    key_code: 67
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam1
+    preset_num: 7
+    key_code: 68
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam1
+    preset_num: 8
+    key_code: 69
+
+
+
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam2
+    preset_num: 1
+    key_code: 78
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam2
+    preset_num: 2
+    key_code: 79
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam2
+    preset_num: 3
+    key_code: 80
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam2
+    preset_num: 4
+    key_code: 81
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam2
+    preset_num: 5
+    key_code: 82
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam2
+    preset_num: 6
+    key_code: 83
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam2
+    preset_num: 7
+    key_code: 84
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam2
+    preset_num: 8
+    key_code: 85
+
+
+
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam3
+    preset_num: 1
+    key_code: 94
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam3
+    preset_num: 2
+    key_code: 95
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam3
+    preset_num: 3
+    key_code: 96
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam3
+    preset_num: 4
+    key_code: 97
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam3
+    preset_num: 5
+    key_code: 98
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam3
+    preset_num: 6
+    key_code: 99
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam3
+    preset_num: 7
+    key_code: 100
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam3
+    preset_num: 8
+    key_code: 101
+
+
+
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam4
+    preset_num: 1
+    key_code: 110
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam4
+    preset_num: 2
+    key_code: 111
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam4
+    preset_num: 3
+    key_code: 112
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam4
+    preset_num: 4
+    key_code: 113
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam4
+    preset_num: 5
+    key_code: 114
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam4
+    preset_num: 6
+    key_code: 115
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam4
+    preset_num: 7
+    key_code: 116
+  - include: akai_onvif_preset_key.yaml
+    camera_alias: cam4
+    preset_num: 8
+    key_code: 117
+
+  - {{ rule_midi_set_onvif_active_camera('cam1', 36) }}
+  - {{ rule_midi_set_onvif_active_camera_indicate('cam1', 36) }}
+  - {{ rule_midi_set_onvif_active_camera_no_indicate('cam1', 36) }}
+
+  - {{ rule_midi_set_onvif_active_camera('cam2', 37) }}
+  - {{ rule_midi_set_onvif_active_camera_indicate('cam2', 37) }}
+  - {{ rule_midi_set_onvif_active_camera_no_indicate('cam2', 37) }}
+
+  - {{ rule_midi_set_onvif_active_camera('cam3', 38) }}
+  - {{ rule_midi_set_onvif_active_camera_indicate('cam3', 38) }}
+  - {{ rule_midi_set_onvif_active_camera_no_indicate('cam3', 38) }}
+
+  - {{ rule_midi_set_onvif_active_camera('cam4', 39) }}
+  - {{ rule_midi_set_onvif_active_camera_indicate('cam4', 39) }}
+  - {{ rule_midi_set_onvif_active_camera_no_indicate('cam4', 39) }}

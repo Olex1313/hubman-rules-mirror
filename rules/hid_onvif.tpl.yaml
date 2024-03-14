@@ -1,0 +1,109 @@
+{% macro rule_hid_onvif_go_to_preset(preset_num, key_code) %}
+  name: HidGoToPreset_{{ preset_num }}_{{ key_code }}
+  manipulator_name: hidman
+  executor_name: onvifman
+  signal_code: KeyReleasedSignal
+  command_code: PTZGoToPresetCommand
+  trigger:
+    and:
+      - ==:
+          - var: key_code
+          - {{ key_code }}
+      - <:
+          - var: hold_duration
+          - 1e+09
+  logic:
+    cam_alias: active
+    preset_num: {{ preset_num }}
+{% endmacro %}
+
+
+{% macro rule_hid_onvif_set_preset(preset_num, key_code) %}
+  name: HidSetPreset_{{ preset_num }}_{{ key_code }}
+  manipulator_name: hidman
+  executor_name: onvifman
+  signal_code: KeyReleasedSignal
+  command_code: PTZSetPresetCommand
+  trigger:
+    and:
+      - ==:
+          - var: key_code
+          - {{ key_code }}
+      - '>':
+          - var: hold_duration
+          - 1e+09
+  logic:
+    cam_alias: active
+    preset_num: {{ preset_num }}
+{% endmacro %}
+
+
+{% macro rule_hid_onvif_set_active_camera(camera_alias, key_code) %}
+  name: HidSetActive_{{ camera_alias }}_{{ key_code }}
+  manipulator_name: hidman
+  executor_name: onvifman
+  signal_code: KeyReleasedSignal
+  command_code: SetCameraActiveCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias: {{ camera_alias }}
+{% endmacro %}
+
+{% macro rule_hid_onvif_move_active_camera(pushed, pan, tilt, zoom, key_code) %}
+  name: HidMoveActiveCamera_{{ pushed }}_{{ pan }}_{{ tilt }}_{{ zoom }}_{{key_code}}
+  manipulator_name: hidman
+  executor_name: onvifman
+  signal_code: {% if pushed %}
+    KeyPushedSignal
+  {% else %}
+    KeyReleasedSignal
+  {% endif %}
+  command_code: PTZMoveCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{key_code}}
+  logic:
+    cam_alias: active
+    pan: {{ pan }}
+    tilt: {{ tilt }}
+    zoom: {{ zoom }}
+{% endmacro %}
+
+
+{% macro rule_hid_onvif_set_speed(pan, tilt, zoom, key_code) %}
+  name: HidSetCameraSpeed_{{ pan }}_{{ tilt }}_{{ zoom }}_{{key_code}}
+  manipulator_name: hidman
+  executor_name: onvifman
+  signal_code: KeyPushedSignal
+  command_code: PTZSetSpeedCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{key_code}}
+  logic:
+    cam_alias: active
+    pan: {{ pan }}
+    tilt: {{ tilt }}
+    zoom: {{ zoom }}
+{% endmacro %}
+
+{% macro rule_hid_onvif_update_speed(pan, tilt, zoom, key_code) %}
+  name: HidSetCameraSpeed_{{ pan }}_{{ tilt }}_{{ zoom }}_{{key_code}}
+  manipulator_name: hidman
+  executor_name: onvifman
+  signal_code: KeyPushedSignal
+  command_code: PTZUpdateSpeedCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{key_code}}
+  logic:
+    cam_alias: active
+    pan: {{ pan }}
+    tilt: {{ tilt }}
+    zoom: {{ zoom }}
+{% endmacro %}

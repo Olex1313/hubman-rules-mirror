@@ -1,0 +1,78 @@
+# PTZ управление на HID нампад
+
+rules:
+  #  move_camera
+  - {{ rule_hid_onvif_move_active_camera(True, 0, -1, 0, 81) }}
+  - {{ rule_hid_onvif_move_active_camera(False, 0, 1, 0, 81) }}
+  - {{ rule_hid_onvif_move_active_camera(True, -1, 0, 0, 80) }}
+  - {{ rule_hid_onvif_move_active_camera(False, 1, 0, 0, 80) }}
+  - {{ rule_hid_onvif_move_active_camera(True, 1, 0, 0, 79) }}
+  - {{ rule_hid_onvif_move_active_camera(False, -1, 0, 0, 79) }}
+  - {{ rule_hid_onvif_move_active_camera(True, 0, 1, 0, 82) }}
+  - {{ rule_hid_onvif_move_active_camera(False, 0, -1, 0, 82) }}
+  - {{ rule_hid_onvif_move_active_camera(True, 0, 0, 1, 73) }}
+  - {{ rule_hid_onvif_move_active_camera(False, 0, 0, -1, 73) }}
+  - {{ rule_hid_onvif_move_active_camera(True, 0, 0, -1, 76) }}
+  - {{ rule_hid_onvif_move_active_camera(False, 0, 0, 1, 76) }}
+
+  #  go_to_preset
+  - {{ rule_hid_onvif_go_to_preset(0, 39) }}
+  - {{ rule_hid_onvif_go_to_preset(1, 30) }}
+  - {{ rule_hid_onvif_go_to_preset(2, 31) }}
+  - {{ rule_hid_onvif_go_to_preset(3, 32) }}
+  - {{ rule_hid_onvif_go_to_preset(4, 33) }}
+  - {{ rule_hid_onvif_go_to_preset(5, 34) }}
+  - {{ rule_hid_onvif_go_to_preset(6, 35) }}
+  - {{ rule_hid_onvif_go_to_preset(7, 36) }}
+  - {{ rule_hid_onvif_go_to_preset(8, 37) }}
+  - {{ rule_hid_onvif_go_to_preset(9, 38) }}
+
+  #  set_preser
+  - {{ rule_hid_onvif_set_preset(0, 39) }}
+  - {{ rule_hid_onvif_set_preset(1, 30) }}
+  - {{ rule_hid_onvif_set_preset(2, 31) }}
+  - {{ rule_hid_onvif_set_preset(3, 32) }}
+  - {{ rule_hid_onvif_set_preset(4, 33) }}
+  - {{ rule_hid_onvif_set_preset(5, 34) }}
+  - {{ rule_hid_onvif_set_preset(6, 35) }}
+  - {{ rule_hid_onvif_set_preset(7, 36) }}
+  - {{ rule_hid_onvif_set_preset(8, 37) }}
+  - {{ rule_hid_onvif_set_preset(9, 38) }}
+
+  #  activate_camera
+  - {{ rule_hid_onvif_set_active_camera('cam1', 41) }}
+  - {{ rule_hid_onvif_set_active_camera('cam2', 43) }}
+  - {{ rule_hid_onvif_set_active_camera('cam3', 46) }}
+  - {{ rule_hid_onvif_set_active_camera('cam4', 42) }}
+  - {{ rule_hid_onvif_set_active_camera('cam5', 84) }}
+  - {{ rule_hid_onvif_set_active_camera('cam6', 85) }}
+  - {{ rule_hid_onvif_set_active_camera('cam7', 86) }}
+
+  #  update speed
+  - {{ rule_hid_onvif_set_speed(1, 1, 1, 54) }}  # set default speed
+  - {{ rule_hid_onvif_update_speed(-0.1, 0, 0, 77) }}
+  - {{ rule_hid_onvif_update_speed(0.1, 0, 0, 74) }}
+  - {{ rule_hid_onvif_update_speed(0, -0.1, 0, 78) }}
+  - {{ rule_hid_onvif_update_speed(0, 0.1, 0, 75) }}
+
+  - name: Autofocus
+    manipulator_name: hidman
+    executor_name: onvifman
+    signal_code: KeyPushedSignal
+    command_code: AutoFocusModeCommand
+    trigger: trigger_hid_check_key_code(70)
+    logic:
+      cam_alias: active
+      mode: AUTO
+
+  - name: StopCamera
+    manipulator_name: hidman
+    executor_name: onvifman
+    signal_code: KeyPushedSignal
+    command_code: PTZStopCommand
+    trigger:
+      ==:
+        - var: key_code
+        - 87
+    logic:
+      cam_alias: active
