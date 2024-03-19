@@ -1,0 +1,169 @@
+devices:
+  - name: midiman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8093
+    user_config:
+      midi_devices:
+        - accumulate_controls: []
+          active: true
+          device_name: Arduino
+          hold_delta: 1000
+          namespace: default
+          reconnect_interval: 1500
+          startup_delay: 1500
+    signals:
+      - code: NoteReleasedAfterHold
+        description: NoteReleasedAfterHold - signal represents state of key with 'Note' type right off it was released on a device after hold
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+      - code: ControlPushed
+        description: ControlPushed - signal represents state of key with 'Control' type right off it was pressed on a device
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+      - code: NamespaceChanged
+        description: NamespaceChanged - signal represents successful namespace change
+        args:
+          device: String
+          new_namespace: String
+          old_namespace: String
+      - code: NotePushed
+        description: NotePushed - signal represents state of key with 'Note' type right off it was pressed on a device
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+      - code: NoteHold
+        description: NoteHold - signal represents state of key with 'Note' type that is pressed for long
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+      - code: NoteReleased
+        description: NoteReleased - signal represents state of key with 'Note' type right off it was released on a device
+        args:
+          device: String
+          key_code: Integer
+          namespace: String
+          velocity: Integer
+    commands:
+      - code: SingleReversedBlinkCommand
+        description: Single reverse blink (...->on->off->on) for specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+      - code: SetActiveNamespaceCommand
+        description: Sets given namespace as active on given device, all signals will be received from will contain active namespace attribute
+        args:
+          device: String
+          namespace: String
+      - code: SetBoolVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified boolean
+        args:
+          var_name: String
+          var_value: Bool
+      - code: TurnLightOnCommand
+        description: Turns light on for specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+      - code: SingleBlinkCommand
+        description: Single blink (...->off->on->off) for specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+      - code: TurnLightOffCommand
+        description: Turns light off for specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+      - code: ContinuousBlinkCommand
+        description: Continuous blink (until next discontinuous command) specified MIDI key
+        args:
+          color_name: String
+          device_alias: String
+          key_code: Integer
+      - code: SetStringVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified string
+        args:
+          var_name: String
+          var_value: String
+      - code: SetIntegerVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified integer number
+        args:
+          var_name: String
+          var_value: Integer
+      - code: SetFloatVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified float number
+        args:
+          var_name: String
+          var_value: Float
+  - name: socketman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8101
+    user_config:
+      userws:
+        proxyhost: 172.18.212.96
+        proxyport: "8080"
+        titleshost: 172.18.212.96
+        titlesport: "8080"
+    signals:
+      - code: ProxyNodeSetActiveSignal
+        description: Produces node notification signal when scene activated
+        args:
+          proxy_group_id: Integer
+          proxy_group_name: String
+      - code: TitlesStatusSignal
+        description: TitlesStatusSignal
+        args:
+          status: String
+      - code: ProxyNodeStatusSignal
+        description: Produces node status signal when it was recieved from proxy websocket
+        args:
+          cam_id: Integer
+          cam_name: String
+          status: String
+    commands:
+      - code: SetBoolVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified boolean
+        args:
+          var_name: String
+          var_value: Bool
+      - code: SwitchGroupById
+        description: SwitchGroupById
+        args:
+          group_id: Integer
+      - code: SwitchGroupByName
+        description: SwitchGroupByName
+        args:
+          group_name: String
+      - code: SetStringVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified string
+        args:
+          var_name: String
+          var_value: String
+      - code: SetIntegerVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified integer number
+        args:
+          var_name: String
+          var_value: Integer
+      - code: SetFloatVarCommand
+        description: Sets variable with given name and value globally across agents as a jsonified float number
+        args:
+          var_name: String
+          var_value: Float
+rules:
+  - include: midi_megabuttons_proxy.yaml
