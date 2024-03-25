@@ -39,7 +39,7 @@
 
 
 {% macro rule_hid_onvif_set_active_camera(camera_alias, key_code) %}
-  name: HidSetActive_{{ camera_alias }}_{{ key_code }}
+- name: HidSetActive_{{ camera_alias }}_{{ key_code }}
   manipulator_name: hidman
   executor_name: onvifman
   signal_code: KeyReleasedSignal
@@ -50,6 +50,19 @@
       - {{ key_code }}
   logic:
     cam_alias: {{ camera_alias }}
+
+- name: HidSetActiveWSVar_{{ camera_alias }}_{{ key_code }}
+  manipulator_name: hidman
+  executor_name: socketman
+  signal_code: KeyReleasedSignal
+  command_code: SetStringVarCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+    logic:
+      var_name: $active_camera
+      var_value: {{ camera_alias }}
 {% endmacro %}
 
 {% macro rule_hid_onvif_move_active_camera(pushed, pan, tilt, zoom, key_code) %}
