@@ -1,0 +1,17 @@
+{% macro rule_midi_tracker_toggle(key_code) %}
+
+  name: MidiFireTrackerToggle_{{ key_code }}
+  manipulator_name: midiman
+  executor_name: socketman
+  signal_code: NotePushed
+  command_code: SetActionTypeCommand
+  trigger:
+    ==:
+      - var: key_code
+      - {{ key_code }}
+  logic:
+    cam_alias:
+      var: $active_camera
+    action_type: toggle
+
+{% endmacro %}
