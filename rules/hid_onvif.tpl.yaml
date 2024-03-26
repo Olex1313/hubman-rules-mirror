@@ -60,9 +60,9 @@
     ==:
       - var: key_code
       - {{ key_code }}
-    logic:
-      var_name: $active_camera
-      var_value: {{ camera_alias }}
+  logic:
+    var_name: $active_camera
+    var_value: {{ camera_alias }}
 {% endmacro %}
 
 {% macro rule_hid_onvif_move_active_camera(pushed, pan, tilt, zoom, key_code) %}

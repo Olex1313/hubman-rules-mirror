@@ -1,5 +1,4 @@
 {% macro rule_hid_tracker_toggle(key_code) %}
-
   name: HidTrackerToggle_{{ key_code }}
   manipulator_name: hidman
   executor_name: socketman
@@ -13,5 +12,4 @@
     cam_alias:
       var: $active_camera
     action_type: toggle
-
 {% endmacro %}

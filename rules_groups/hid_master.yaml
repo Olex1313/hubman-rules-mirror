@@ -55,8 +55,6 @@ rules:
   - {{ rule_hid_onvif_update_speed(0, -0.1, 0, 78) }}
   - {{ rule_hid_onvif_update_speed(0, 0.1, 0, 75) }}
 
-  - {{ rule_hid_tracker_toggle(1) }}
-
   - name: Autofocus
     manipulator_name: hidman
     executor_name: onvifman

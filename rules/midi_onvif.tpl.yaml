@@ -115,9 +115,9 @@
     ==:
       - var: key_code
       - {{ key_code }}
-    logic:
-      var_name: $active_camera
-      var_value: {{ cam_alias }}
+  logic:
+    var_name: $active_camera
+    var_value: {{ cam_alias }}
 {% endmacro %}
 
 

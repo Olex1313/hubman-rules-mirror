@@ -153,4 +153,4 @@ rules:
   - {{ rule_midi_set_onvif_active_camera_indicate('cam4', 39) }}
   - {{ rule_midi_set_onvif_active_camera_no_indicate('cam4', 39) }}
 
-  - {{ rule_midi_tracker_toggle(118) }}
+  - {{ rule_midi_tracker_toggle(33) }}
