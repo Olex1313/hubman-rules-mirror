@@ -12,6 +12,13 @@ devices:
           namespace: default
           reconnect_interval: 1500
           startup_delay: 1500
+        - accumulate_controls: []
+          active: true
+          device_name: Arduino_1_1
+          hold_delta: 1000
+          namespace: default
+          reconnect_interval: 1500
+          startup_delay: 1500
   - name: socketman
     is_manipulator: true
     is_executor: true
@@ -29,4 +36,4 @@ devices:
             dial_timeout: 5000
             healthcheck_interval: 2000
 rules:
-  - include: midi_megabuttons_proxy_rack.yaml
+  - include: midi_megabuttons_proxy_separated.yaml

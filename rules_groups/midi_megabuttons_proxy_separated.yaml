@@ -1,0 +1,65 @@
+rules:
+  # Separated midi buttons
+  - {{ rule_midi_switch_room_by_id(15, 0, "Arduino_1_1")}}
+  - {{ rule_midi_switch_room_by_id_light_off(15, 0, "Arduino_1_1") }}
+  - {{ rule_midi_switch_room_by_id_light_on(15, 0, "Arduino_1_1") }}
+
+  - {{ rule_midi_switch_room_by_id(14, 1, "Arduino_1_1")}}
+  - {{ rule_midi_switch_room_by_id_light_off(14, 1, "Arduino_1_1") }}
+  - {{ rule_midi_switch_room_by_id_light_on(14, 1, "Arduino_1_1") }}
+
+  - {{ rule_midi_switch_room_by_id(13, 2, "Arduino_1_1")}}
+  - {{ rule_midi_switch_room_by_id_light_off(13, 2, "Arduino_1_1") }}
+  - {{ rule_midi_switch_room_by_id_light_on(13, 2, "Arduino_1_1") }}
+
+  - {{ rule_midi_switch_room_by_id(12, 3, "Arduino_1_1")}}
+  - {{ rule_midi_switch_room_by_id_light_off(12, 3, "Arduino_1_1") }}
+  - {{ rule_midi_switch_room_by_id_light_on(12, 3, "Arduino_1_1") }}
+
+  - {{ rule_midi_switch_room_by_id(11, 4, "Arduino_1_1")}}
+  - {{ rule_midi_switch_room_by_id_light_off(11, 4, "Arduino_1_1") }}
+  - {{ rule_midi_switch_room_by_id_light_on(11, 4, "Arduino_1_1") }}
+
+  - {{ rule_midi_switch_room_by_id(10, 5, "Arduino_1_1")}}
+  - {{ rule_midi_switch_room_by_id_light_off(10, 5, "Arduino_1_1") }}
+  - {{ rule_midi_switch_room_by_id_light_on(10, 5, "Arduino_1_1") }}
+
+  - {{ rule_midi_switch_room_by_id(9, 6, "Arduino_1_1")}}
+  - {{ rule_midi_switch_room_by_id_light_off(9, 6, "Arduino_1_1") }}
+  - {{ rule_midi_switch_room_by_id_light_on(9, 6, "Arduino_1_1") }}
+
+  - {{ rule_midi_switch_room_by_id(8, 7, "Arduino_1_1")}}
+  - {{ rule_midi_switch_room_by_id_light_off(8, 7, "Arduino_1_1") }}
+  - {{ rule_midi_switch_room_by_id_light_on(8, 7, "Arduino_1_1") }}
+  # Rack buttons
+  - {{ rule_midi_switch_room_by_id(15, 8, "Arduino_1_2")}}
+  - {{ rule_midi_switch_room_by_id_light_off(15, 8, "Arduino_1_2") }}
+  - {{ rule_midi_switch_room_by_id_light_on(15, 8, "Arduino_1_2") }}
+
+  - {{ rule_midi_switch_room_by_id(14, 9, "Arduino_1_2")}}
+  - {{ rule_midi_switch_room_by_id_light_off(14, 9, "Arduino_1_2") }}
+  - {{ rule_midi_switch_room_by_id_light_on(14, 9, "Arduino_1_2") }}
+
+  - {{ rule_midi_switch_room_by_id(13, 10, "Arduino_1_2")}}
+  - {{ rule_midi_switch_room_by_id_light_off(13, 10, "Arduino_1_2") }}
+  - {{ rule_midi_switch_room_by_id_light_on(13, 10, "Arduino_1_2") }}
+
+  - {{ rule_midi_switch_room_by_id(12, 11, "Arduino_1_2")}}
+  - {{ rule_midi_switch_room_by_id_light_off(12, 11, "Arduino_1_2") }}
+  - {{ rule_midi_switch_room_by_id_light_on(12, 11, "Arduino_1_2") }}
+
+  - {{ rule_midi_switch_room_by_id(11, 12, "Arduino_1_2")}}
+  - {{ rule_midi_switch_room_by_id_light_off(11, 12, "Arduino_1_2") }}
+  - {{ rule_midi_switch_room_by_id_light_on(11, 12, "Arduino_1_2") }}
+
+  - {{ rule_midi_switch_room_by_id(10, 13, "Arduino_1_2")}}
+  - {{ rule_midi_switch_room_by_id_light_off(10, 13, "Arduino_1_2") }}
+  - {{ rule_midi_switch_room_by_id_light_on(10, 13, "Arduino_1_2") }}
+
+  - {{ rule_midi_switch_room_by_id(9, 14, "Arduino_1_2")}}
+  - {{ rule_midi_switch_room_by_id_light_off(9, 14, "Arduino_1_2") }}
+  - {{ rule_midi_switch_room_by_id_light_on(9, 14, "Arduino_1_2") }}
+
+  - {{ rule_midi_switch_room_by_id(8, 15, "Arduino_1_2")}}
+  - {{ rule_midi_switch_room_by_id_light_off(8, 15, "Arduino_1_2") }}
+  - {{ rule_midi_switch_room_by_id_light_on(8, 15, "Arduino_1_2") }}
