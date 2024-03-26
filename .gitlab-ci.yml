@@ -11,28 +11,28 @@ before_script:
   - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
-  - python3 -m pip lur/requirements.txt
+  - pip install lur/requirements.txt
 
 check-pocket-numpad:
   script:
-    - python3 -m lur pocket-numpad.yaml
+    - python -m lur pocket-numpad.yaml
   tags:
     - docker
 
 check-director-operator:
   script:
-    - python3 -m lur director-operator.yaml
+    - python -m lur director-operator.yaml
   tags:
     - docker
 
 check-megabuttons-proxy:
   script:
-    - python3 -m lur megabuttons-proxy.yaml
+    - python -m lur megabuttons-proxy.yaml
   tags:
     - docker
   
 check-operator:
   script:
-    - python3 -m lur operator.yaml
+    - python -m lur operator.yaml
   tags:
     - docker
