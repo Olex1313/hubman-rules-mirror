@@ -1,10 +1,10 @@
 # for command == switch group by id
-{% macro rule_midi_switch_room_by_id(key_code, group_id, device_alias="Arduino", namespace="default") %}
+{% macro rule_midi_switch_room_by_id(key_code, group_id, device_alias, namespace="default") %}
   name: midi_switch_onvif_room_by_id_{{key_code}}_{{group_id}}_{{device_alias}}_{{namespace}}
   manipulator_name: midiman
   executor_name: socketman
   signal_code: NotePushed
-  command_code: SwitchGroupById
+  command_code: SwitchGroupByIdCommand
   trigger:
     and:
       and:
@@ -22,11 +22,11 @@
 {% endmacro %}
 
 # for command == switch group by id
-{% macro rule_midi_switch_room_by_id_light_on(key_code, group_id, device_alias="Arduino", namespace="default") %}
+{% macro rule_midi_switch_room_by_id_light_on(key_code, group_id, device_alias, namespace="default") %}
   name: midi_switch_room_by_id_light_on_{{key_code}}_{{group_id}}_{{device_alias}}_{{namespace}}
   manipulator_name: socketman
   executor_name: midiman
-  signal_code: ProxyNodeSetActiveSignal
+  signal_code: ProxyGroupChangedSignal
   command_code: TurnLightOnCommand
   trigger:
     ==:
@@ -40,11 +40,11 @@
 
 
 # for command == switch group by id
-{% macro rule_midi_switch_room_by_id_light_off(key_code, group_id, device_alias="Arduino", namespace="default") %}
+{% macro rule_midi_switch_room_by_id_light_off(key_code, group_id, device_alias, namespace="default") %}
   name: midi_switch_room_by_id_light_off_{{key_code}}_{{group_id}}_{{device_alias}}_{{namespace}}
   manipulator_name: socketman
   executor_name: midiman
-  signal_code: ProxyNodeSetActiveSignal
+  signal_code: ProxyGroupChangedSignal
   command_code: TurnLightOffCommand
   trigger:
     '!=':
@@ -57,7 +57,7 @@
 {% endmacro %}
 
 # for command == switch group by id
-{% macro rule_midi_switch_room_by_name(key_code, group_name, device_alias="Arduino", namespace="default") %}
+{% macro rule_midi_switch_room_by_name(key_code, group_name, device_alias, namespace="default") %}
   name: midi_switch_room_by_name_{{key_code}}_{{group_name}}_{{device_alias}}_{{namespace}}
   manipulator_name: midiman
   executor_name: socketman
@@ -81,11 +81,11 @@
 
 
 # for command == switch group by id
-{% macro rule_midi_switch_room_by_name_light_on(key_code, group_name, device_alias="Arduino", namespace="default") %}
+{% macro rule_midi_switch_room_by_name_light_on(key_code, group_name, device_alias, namespace="default") %}
   name: midi_switch_room_by_name_light_on_{{key_code}}_{{group_name}}_{{namespace}}
   manipulator_name: socketman
   executor_name: midiman
-  signal_code: ProxyNodeSetActiveSignal
+  signal_code: ProxyGroupChangedSignal
   command_code: TurnLightOnCommand
   trigger:
     - ==:
@@ -97,11 +97,11 @@
     key_code: {{ key_code }}
 {% endmacro %}
 
-{% macro rule_midi_switch_room_by_name_light_off(key_code, group_name, device_alias="Arduino", namespace="default") %}
+{% macro rule_midi_switch_room_by_name_light_off(key_code, group_name, device_alias, namespace="default") %}
   name: midi_switch_room_by_name_light_off_{{key_code}}_{{group_name}}_{{device_alias}}_{{namespace}}
   manipulator_name: socketman
   executor_name: midiman
-  signal_code: ProxyNodeSetActiveSignal
+  signal_code: ProxyGroupChangedSignal
   command_code: TurnLightOffCommand
   trigger:
       - ==:
