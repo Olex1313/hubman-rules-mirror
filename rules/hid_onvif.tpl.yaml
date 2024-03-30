@@ -120,3 +120,25 @@
     tilt: {{ tilt }}
     zoom: {{ zoom }}
 {% endmacro %}
+
+{% macro rule_hid_onvif_go_to_preset_for_camera(cam_alias, preset_num, key_code) %}
+  name: HidGoToPreset_{{ cam_alias }}_{{ preset_num }}_{{ key_code }}
+  manipulator_name: hidman
+  executor_name: onvifman
+  signal_code: KeyReleasedSignal
+  command_code: PTZGoToPresetCommand
+  trigger:
+    and:
+      - ==:
+          - var: key_code
+          - {{ key_code }}
+      - <:
+          - var: hold_duration
+          - 1e+09
+      - ==:
+          - var: modifier
+          - 0
+  logic:
+    cam_alias: {{ cam_alias }}
+    preset_num: {{ preset_num }}
+{% endmacro %}
