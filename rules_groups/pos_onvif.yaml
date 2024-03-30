@@ -81,10 +81,8 @@ rules:
   - {{ rule_hid_switch_room_by_name(43, "Room-504") }}
   - {{ rule_hid_switch_room_by_name(20, "Room-506") }}
   - {{ rule_hid_switch_room_by_name(26, "Room-501") }}
-  - {{ rule_hid_switch_room_by_id(8, 11) }}
+  # TODO: актовый зал rule_hid_switch_room_by_id(8, ...)
   - {{ rule_hid_switch_room_by_name(7, "Room-210") }}
   - {{ rule_hid_switch_room_by_name(9, "Room-214") }}
-  - {{ rule_hid_switch_room_by_id(89, 14) }}
-  - {{ rule_hid_switch_room_by_id(90, 15) }}
-
-
+  # TODO: выездной rule_hid_switch_room_by_name(89, ...)
+  # TODO: комплект rule_hid_switch_room_by_name(90, ...)
