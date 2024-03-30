@@ -1,6 +1,6 @@
 # for command == switch group by id
 {% macro rule_hid_switch_room_by_id(key_code, group_id) %}
-  name: hid_switch_onvif_room_by_id_{{ key_code }}_{{ group_id }}
+  name: hid_switch_onvif_room_by_id_{{key_code}}_{{group_id}}
   manipulator_name: hidman
   executor_name: socketman
   signal_code: KeyPushedSignal
@@ -19,11 +19,11 @@
 
 # for command == switch group by id
 {% macro rule_hid_switch_room_by_name(key_code, group_name) %}
-  name: hid_switch_room_by_name_{{ key_code }}_{{ group_name }}
+  name: hid_switch_room_by_name_{{key_code}}_{{group_name}}
   manipulator_name: hidman
   executor_name: socketman
   signal_code: KeyPushedSignal
-  command_code: SwitchGroupByName
+  command_code: SwitchGroupByNameCommand
   trigger:
     and:
       - ==:
