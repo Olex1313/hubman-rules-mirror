@@ -690,6 +690,23 @@ devices:
         description: PelcoNearSignal - signal to focus closer. Have not data
         args:
           camera_num: Integer
+
+  - name: socketman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8101
+    user_config:
+      userws:
+        onvif-proxy:
+          proxyhost: "172.18.191.18"
+          proxyport: "8000"
+          dial_timeout: 5000
+          healthcheck_interval: 2000
+        tracker:
+          trackerhost: "172.18.191.14"
+          trackerport: "8888"
+          dial_timeout: 5000
+          healthcheck_interval: 2000
 rules:
   - include: akai_visca.yaml
   - include: akai_obs.yaml
