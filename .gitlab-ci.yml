@@ -36,3 +36,9 @@ check-operator:
     - python -m lur operator.yaml
   tags:
     - docker
+
+check-pos:
+  script:
+    - python -m lur pos.yaml
+  tags:
+    - docker
