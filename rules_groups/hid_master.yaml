@@ -60,7 +60,10 @@ rules:
     executor_name: onvifman
     signal_code: KeyPushedSignal
     command_code: AutoFocusModeCommand
-    trigger: trigger_hid_check_key_code(70)
+    trigger:
+      ==:
+        - var: key_code
+        - 70
     logic:
       cam_alias: active
       mode: AUTO
