@@ -1,0 +1,88 @@
+rules:
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 0, 53) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 1, 45) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 2, 46) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 3, 42) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 4, 44) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 5, 40) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 6, 88) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 7, 74) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 8, 77) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 9, 75) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 10, 78) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 11, 49) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam1", 12, 56) }}
+
+
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 0, 20) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 1, 26) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 2, 8) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 3, 21) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 4, 23) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 5, 28) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 6, 24) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 7, 12) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 8, 18) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 9, 19) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 10, 4) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 11, 22) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam2", 12, 7) }}
+
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 0, 9) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 1, 10) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 2, 11) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 3, 13) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 4, 14) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 5, 15) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 6, 29) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 7, 27) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 8, 6) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 9, 25) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 10, 5) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 11, 17) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam3", 12, 16) }}
+
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 0, 30) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 1, 31) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 2, 32) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 3, 33) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 4, 34) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 5, 35) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 6, 36) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 7, 37) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 8, 38) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 9, 39) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 10, 58) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 11, 59) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam4", 12, 60) }}
+
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 0, 61) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 1, 62) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 2, 63) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 3, 64) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 4, 65) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 5, 66) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 6, 67) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 7, 68) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 8, 69) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 9, 89) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 10, 90) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 11, 91) }}
+  - {{ rule_hid_onvif_go_to_preset_for_camera("cam5", 12, 92) }}
+
+
+  - {{ rule_hid_switch_room_by_name(30, "Room-302") }}
+  - {{ rule_hid_switch_room_by_name(31, "Room-303") }}
+  - {{ rule_hid_switch_room_by_name(32, "Room-304") }}
+  - {{ rule_hid_switch_room_by_name(33, "Room-305") }}
+  - {{ rule_hid_switch_room_by_name(34, "Room-306") }}
+  - {{ rule_hid_switch_room_by_name(35, "Room-307") }}
+  - {{ rule_hid_switch_room_by_name(36, "Room-308") }}
+  - {{ rule_hid_switch_room_by_name(43, "Room-504") }}
+  - {{ rule_hid_switch_room_by_name(20, "Room-506") }}
+  - {{ rule_hid_switch_room_by_name(26, "Room-501") }}
+  # TODO: актовый зал rule_hid_switch_room_by_id(8, ...)
+  - {{ rule_hid_switch_room_by_name(7, "Room-210") }}
+  - {{ rule_hid_switch_room_by_name(9, "Room-214") }}
+  # TODO: выездной rule_hid_switch_room_by_name(89, ...)
+  # TODO: комплект rule_hid_switch_room_by_name(90, ...)

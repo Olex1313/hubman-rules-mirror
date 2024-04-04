@@ -1,0 +1,48 @@
+devices:
+  - name: hidman
+    is_manipulator: true
+    is_executor: false
+    url: http://127.0.0.1:8091
+    user_config:
+      hid:
+        devices:
+          - hold_delta: 1000,
+            max_restart_retries: 10,
+            product_id: 24,
+            restart_devices_interval_sec: 1
+
+  - name: onvifman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8092
+    user_config:
+      cameras:
+        - alias: cam1
+          password: Supervisor
+          speed:
+            pan: 0.5
+            tilt: 0.5
+            zoom: 1
+          timeout: 1s
+          url: 172.18.191.247:81
+          user: admin
+      health_check_interval_ms: 0
+
+  - name: socketman
+    is_manipulator: true
+    is_executor: true
+    url: http://127.0.0.1:8101
+    user_config:
+      userws:
+        onvif-proxy:
+            proxyhost: "172.18.191.18"
+            proxyport: "8000"
+            dial_timeout: 5000
+            healthcheck_interval : 2000
+        tracker:
+            trackerhost: "172.18.191.14"
+            trackerport: "8888"
+            dial_timeout: 5000
+            healthcheck_interval: 2000
+rules:
+  - include: pos_onvif.yaml
