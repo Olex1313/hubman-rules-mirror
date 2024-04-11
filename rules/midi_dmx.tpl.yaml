@@ -1,0 +1,97 @@
+{% macro rule_midi_set_dmx_channel(key_code, channel, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
+  name: MidiEasyControlSetDmxChannel_{{channel}}_{{key_code}}
+  manipulator_name: midiman
+  executor_name: dmxman
+  signal_code: ControlPushed
+  command_code: SetChannel
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ manipulator_device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    channel: {{ channel }}
+    value:
+      '+':
+        - var: velocity
+        - 0
+    device_alias: {{ executor_device_alias }}
+{% endmacro %}
+
+{% macro rule_midi_increment_dmx_channel(key_code, channel, increment=1, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
+  name: MidiEasyControlIncrementDmxChannel_{{channel}}_{{key_code}}
+  manipulator_name: midiman
+  executor_name: dmxman
+  signal_code: ControlPushed
+  command_code: IncrementChannel
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ manipulator_device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    channel: {{ channel }}
+    value: {{ increment }}
+    device_alias: {{ executor_device_alias }}
+{% endmacro %}
+
+{% macro rule_midi_dmx_blackout(key_code, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
+  name: MidiEasyControlDmxBlackout_{{key_code}}
+  manipulator_name: midiman
+  executor_name: dmxman
+  signal_code: ControlPushed
+  command_code: Blackout
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ manipulator_device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    device_alias: {{ executor_device_alias }}
+{% endmacro %}
+
+{% macro rule_midi_set_dmx_scene(key_code, scene_alias, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
+  name: MidiEasyControlSetDmxScene_{{scene_alias}}_{{key_code}}
+  manipulator_name: midiman
+  executor_name: dmxman
+  signal_code: ControlPushed
+  command_code: SetScene
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ manipulator_device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    device_alias: {{ executor_device_alias }}
+    scene_alias: {{ scene_alias }}
+{% endmacro %}
+
+{% macro rule_midi_save_dmx_scene(key_code, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
+  name: MidiEasyControlSaveDmxScene_{{key_code}}
+  manipulator_name: midiman
+  executor_name: dmxman
+  signal_code: ControlPushed
+  command_code: SaveScene
+  trigger:
+    and:
+      - ==:
+        - var: device
+        - {{ manipulator_device_alias }}
+      - ==:
+        - var: key_code
+        - {{ key_code }}
+  logic:
+    device_alias: {{ executor_device_alias }}
+{% endmacro %}

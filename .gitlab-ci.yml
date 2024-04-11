@@ -37,6 +37,12 @@ check-operator:
   tags:
     - docker
 
+check-worlde-ec9-dmx:
+  script:
+    - python -m lur worlde_ec9_dmx.yaml
+  tags:
+    - docker
+
 check-pos:
   script:
     - python -m lur pos.yaml
