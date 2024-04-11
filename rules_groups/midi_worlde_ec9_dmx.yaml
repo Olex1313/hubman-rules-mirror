@@ -1,0 +1,26 @@
+rules:
+  # First row, rooms [1-8]
+  - {{ rule_midi_set_dmx_channel(3, 0) }}
+  - {{ rule_midi_set_dmx_channel(4, 1) }}
+  - {{ rule_midi_set_dmx_channel(5, 2) }}
+  - {{ rule_midi_set_dmx_channel(6, 3) }}
+  - {{ rule_midi_set_dmx_channel(7, 4) }}
+  - {{ rule_midi_set_dmx_channel(8, 5) }}
+  - {{ rule_midi_set_dmx_channel(9, 6) }}
+  - {{ rule_midi_set_dmx_channel(10, 7) }}
+  - {{ rule_midi_set_dmx_channel(11, 8) }}
+
+  - {{ rule_midi_set_dmx_scene(23, 'scene 1') }}
+  - {{ rule_midi_set_dmx_scene(24, 'scene 2') }}
+  - {{ rule_midi_set_dmx_scene(25, 'scene 3') }}
+  - {{ rule_midi_set_dmx_scene(26, 'scene 4') }}
+  - {{ rule_midi_set_dmx_scene(27, 'scene 5') }}
+  - {{ rule_midi_set_dmx_scene(28, 'scene 6') }}
+  - {{ rule_midi_set_dmx_scene(29, 'scene 7') }}
+  - {{ rule_midi_set_dmx_scene(30, 'scene 8') }}
+  - {{ rule_midi_set_dmx_scene(31, 'scene 9') }}
+
+  - {{ rule_midi_dmx_blackout(47) }}
+  - {{ rule_midi_save_dmx_scene(49) }}
+
+
