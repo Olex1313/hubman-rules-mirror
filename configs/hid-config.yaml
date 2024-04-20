@@ -3,6 +3,7 @@
     "devices": [
       {
         "hold_delta": 1000,
+        "device_name": "hid_controller_1",
         "max_restart_retries": 10,
         "product_id": 102,
         "restart_devices_interval_sec": 1
