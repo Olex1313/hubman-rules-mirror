@@ -1,0 +1,25 @@
+rules:
+  - {{ rule_midi_set_dmx_channel(3, 0, "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_channel(4, 1, "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_channel(5, 2, "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_channel(6, 3, "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_channel(7, 4, "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_channel(8, 5, "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_channel(9, 6, "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_channel(10, 7, "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_channel(11, 8, "WORLDE easy control", "Artnet1") }}
+
+  - {{ rule_midi_set_dmx_scene(23, "scene 1", "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_scene(24, "scene 2", "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_scene(25, "scene 3", "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_scene(26, "scene 4", "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_scene(27, "scene 5", "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_scene(28, "scene 6", "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_scene(29, "scene 7", "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_scene(30, "scene 8", "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_set_dmx_scene(31, "scene 9", "WORLDE easy control", "Artnet1") }}
+
+  - {{ rule_midi_dmx_blackout(47, "WORLDE easy control", "Artnet1") }}
+  - {{ rule_midi_save_dmx_scene(49, "WORLDE easy control", "Artnet1") }}
+
+

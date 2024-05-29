@@ -1,5 +1,5 @@
 {% macro rule_midi_set_dmx_channel(key_code, channel, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
-  name: MidiEasyControlSetDmxChannel_{{channel}}_{{key_code}}
+  name: MidiEasyControlSetDmxChannel_{{executor_device_alias}}_{{channel}}_{{key_code}}
   manipulator_name: midiman
   executor_name: dmxman
   signal_code: ControlPushed
@@ -15,14 +15,14 @@
   logic:
     channel: {{ channel }}
     value:
-      '+':
+      '*':
         - var: velocity
-        - 0
+        - 2
     device_alias: {{ executor_device_alias }}
 {% endmacro %}
 
 {% macro rule_midi_increment_dmx_channel(key_code, channel, increment=1, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
-  name: MidiEasyControlIncrementDmxChannel_{{channel}}_{{key_code}}
+  name: MidiEasyControlIncrementDmxChannel_{{executor_device_alias}}_{{channel}}_{{key_code}}
   manipulator_name: midiman
   executor_name: dmxman
   signal_code: ControlPushed
@@ -42,7 +42,7 @@
 {% endmacro %}
 
 {% macro rule_midi_dmx_blackout(key_code, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
-  name: MidiEasyControlDmxBlackout_{{key_code}}
+  name: MidiEasyControlDmxBlackout_{{executor_device_alias}}_{{key_code}}
   manipulator_name: midiman
   executor_name: dmxman
   signal_code: ControlPushed
@@ -60,7 +60,7 @@
 {% endmacro %}
 
 {% macro rule_midi_set_dmx_scene(key_code, scene_alias, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
-  name: MidiEasyControlSetDmxScene_{{scene_alias}}_{{key_code}}
+  name: MidiEasyControlSetDmxScene_{{executor_device_alias}}_{{scene_alias}}_{{key_code}}
   manipulator_name: midiman
   executor_name: dmxman
   signal_code: ControlPushed
@@ -79,7 +79,7 @@
 {% endmacro %}
 
 {% macro rule_midi_save_dmx_scene(key_code, manipulator_device_alias='WORLDE easy control', executor_device_alias='DMX1') %}
-  name: MidiEasyControlSaveDmxScene_{{key_code}}
+  name: MidiEasyControlSaveDmxScene_{{executor_device_alias}}_{{key_code}}
   manipulator_name: midiman
   executor_name: dmxman
   signal_code: ControlPushed
